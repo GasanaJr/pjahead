@@ -1,4 +1,9 @@
-
+/**********************************************************
+This is example code for using liquid flow meters. 
+  Connect the red wire to +5V, 
+the black wire to common ground 
+and the yellow sensor wire to pin #2
+  **********************************************************/
 #include <LiquidCrystal.h> // Include the LiquidCrystal library for LCD
 
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);  // Define LCD pin connections
@@ -66,6 +71,13 @@ void loop() {
 
   // Flow rate calculation for plastic sensor (uncommented)
   float liters = pulses / (7.5 * 60.0);  // Liters per minute
+  /*
+  // if a brass sensor use the following calculation
+  float liters = pulses;
+  liters /= 8.1;
+  liters -= 6;
+  liters /= 60.0;
+*/
 
   Serial.print(liters);
   Serial.println(" Liters");
